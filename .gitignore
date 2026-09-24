@@ -1,0 +1,25 @@
+# Large media (kept locally only; copyrighted clips)
+*.mp4
+*.mov
+*.mkv
+
+# Python / runtime
+.venv/
+__pycache__/
+*.pyc
+
+# SuperBrain runtime data (never commit)
+data/
+logs/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+.env
+*.key
+*.pem
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
