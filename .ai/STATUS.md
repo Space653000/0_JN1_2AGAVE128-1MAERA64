@@ -20,6 +20,7 @@
 | 驗收標準 | `.ai/ACCEPTANCE.md` |
 | Laptop 部分盤點（ARM64、RTX Spark N1X 24GB、OS 可見 38.1GB、SQLite 3.49.1、只有 Wi-Fi、Tailscale 未登入、Insider build） | BLUEPRINT §3.2 |
 | 本地資料夾串接 GitHub | `origin` = github.com/Space653000/0_JN1_2AGAVE128-1MAERA64，branch `main` |
+| 修正 git `user.email` 為 `space653000@gmail.com` | `git config --global user.email`（首個 commit `737581f` 的作者信箱仍是舊值，不改寫歷史） |
 
 ## 🔨 施工中
 
@@ -48,7 +49,6 @@
 | 喚醒詞名稱 | 使用者決定 | P10 |
 | Insider build 是否換回正式版 | 使用者決定 | Laptop 穩定性 |
 | Golden set 真實工作樣本 | 使用者提供 | P6 |
-| git `user.email` 疑似打錯（`space6530002gmail.com`，少了 `@`） | 使用者確認 | commit 作者資訊 |
 
 ## 決策紀錄
 
