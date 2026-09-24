@@ -24,13 +24,25 @@
 
 ## 🔨 施工中
 
-（無）
+**P0 盤點：Laptop 部分已完成（2026-09-24），Spark ×2 尚未。** 原始輸出在 `C:\SuperBrain\baseline\laptop\`（不進 repo）。
+
+| 項目 | 實測 | 對藍圖的影響 |
+|---|---|---|
+| 硬體 | ARM64、20 核、RAM 64GB（Samsung 9400 MT/s）、SSD Micron NVMe 954GB（**C: 剩 210GB**） | 模型放在 Laptop 的空間有限，模型主要放 Spark |
+| Windows | 11 Pro Insider Preview build 28020；韌體顯示 `OVMF 20130221`、廠商 `OEMQAJ`（預發行平台的特徵） | 凍結版本，避免自動更新 |
+| USB | **有 USB4 host router**；XVF3800 已辨識（含 Echo Cancelling Speakerphone 端點）；reSpeaker Control/DFU 裝置都正常 | Hub 與 2.5GbE 網卡可以選 USB4/USB3 規格 |
+| 鏡頭 | 外接的是 **Logi C922 Pro Stream**（不是 C920），另有 Surface 內建前鏡頭與 IR | 藍圖鏡頭名稱已修正；C922 也是 UVC，規劃不變 |
+| 睡眠 | 只有 S0 低電源閒置（Modern Standby），電源計畫為「平衡」 | P1 前要改成插電永不睡眠，否則 Remote 會斷 |
+| API key | 只有 `ANTHROPIC_BASE_URL=https://api.anthropic.com`（由 Claude 桌面 App 在行程層級設定，不是系統設定）；**沒有 API key** | 不會意外走 API 計費 ✅ |
+| 工具 | git 2.55、node 24.17、OpenSSH client 9.5、codex 0.155.0-alpha、claude 2.1.214、ffmpeg 8.1.2、ollama client 0.32.5 | `agy`（Antigravity CLI）、`docker`、`sshd` 都沒有；ollama 服務未啟動 |
 
 ## ⬜ 未完成（依 Phase 順序）
 
 | Phase | 項目 | 下一步 |
 |---|---|---|
-| P0 | Laptop 盤點補完（SSD、USB4、GPU 記憶體切分、API key 環境變數、各 CLI 版本） | 跑 BLUEPRINT §14 的指令 |
+| P0 | Laptop：GPU/RAM 切分能否調整（OS 可見 38.1GB）、Insider 版本凍結、確認 Windows 更新設定 | 查 Surface/NVIDIA 設定；需要你決定是否換回正式版 |
+| P1 前置 | 電源計畫改為插電永不睡眠（需要你同意，這是系統設定） | 見下方「待使用者決定」 |
+| 工具 | 安裝 `agy`（Antigravity CLI）與 Docker（WSL）、啟動 ollama | 需要你同意 |
 | P0 | Spark1、Spark2 盤點 | 兩台開機，在本機跑 §14 的指令 |
 | P0 | 功率量測 | 購買插座功率計 |
 | P1 | 影片同款：T01–T03 | ChatGPT 桌面版 + Remote 配對 |
