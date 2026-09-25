@@ -60,7 +60,7 @@
 | T25 | Spark 嘗試連網 | 失敗（沒有路由，也沒有 DNS）；Laptop 沒有轉送封包 | P2 |
 | T26 | Spark 回報 NEEDS_ESCALATION | Laptop 脫敏後轉給雲端；`local_only` 資料被擋下並詢問使用者 | P8 |
 | T27 | 測試電腦用 SFTP 上傳 CSV | 自動建立任務 → Spark1 產出報告 → 通知 | P9 |
-| T28 | 「看一下儀表」 | C920 拍照 → Spark1 VLM → 回傳讀數與證據圖；影像沒有上雲 | P9 |
+| T28 | 「看一下儀表」 | C922 Pro 拍照 → Spark1 VLM → 回傳讀數與證據圖；影像沒有上雲 | P9 |
 | T29 | UPS 斷電 | 兩台 Spark 在 10 分鐘內正常關機；復電後自動開機，任務恢復 | P3 |
 | T30 | Antigravity 免費額度耗盡 | Router 自動改派 fallback，不會卡住 | P8 |
 

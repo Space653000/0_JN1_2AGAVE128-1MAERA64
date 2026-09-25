@@ -21,7 +21,7 @@
 | 本地優先規則 | 在 golden set 上，本地分數 ≥ 雲端 85% 的任務類型預設走本地；其餘走雲端 |
 | 第一階段語音 | ChatGPT 桌面版 Voice → Codex → 本地 `sb` CLI → SuperBrain（零新增費用） |
 | 最終語音 | reSpeaker XVF3800 + 本地 ASR/TTS，接到**同一個** SuperBrain API（可離線） |
-| 視覺 | Logi C920 → Laptop → Spark1 本地 VLM；影像預設不上雲 |
+| 視覺 | Logi C922 Pro → Laptop → Spark1 本地 VLM；影像預設不上雲 |
 | 外部資料 | 測試電腦與工作站資料 → Laptop 上的 **SFTP 收件區**（FTP 只作為舊設備的過渡方案）→ 隔離與雜湊 → 轉送 Spark 分析 |
 | State/Queue | Laptop 上的 SQLite；**目前 runtime 為 3.49.1，屬 WAL bug 受影響版本 → 先用 rollback journal** |
 | 必要採購 | **UPS ×1**（兩台 Spark + 交換器）、2.5GbE 交換器、USB-C 網卡、USB-C Hub；合計約 NT$9,000～14,000 |
@@ -37,7 +37,7 @@
 3. 盡量不花錢、不浪費額度；**本地能做到雲端 80～90% 水準的工作，就交給本地**。
 4. Laptop Ultra（Windows 11 ARM64）負責對外連網，串接雲端 AI（Claude、ChatGPT、Gemini）、測試電腦與工作站 FTP。
 5. 兩台 Spark 盡量不連網，只跑本地 AI 並把能力發揮到極致；做不到的部分，**透過 Laptop 向雲端求援**。
-6. Laptop 擴充的周邊：Logi C920 鏡頭、reSpeaker XMOS XVF3800 四麥克風陣列（含外殼）、USB-C 耳機。
+6. Laptop 擴充的周邊：Logi C922 Pro 鏡頭、reSpeaker XMOS XVF3800 四麥克風陣列（含外殼）、USB-C 耳機。
 7. 若必須讓 Spark 連網，由 Claude 判斷（見 §4.4 維護窗口）。
 
 ---
@@ -299,11 +299,11 @@ classes:
 
 ---
 
-## 7. 視覺（Logi C920）
+## 7. 視覺（Logi C922 Pro）
 
 | 項目 | 規劃 |
 |---|---|
-| 接法 | C920 是 USB-A → 接 USB-C Hub → Laptop（UVC 免驅動） |
+| 接法 | C922 Pro 是 USB-A → 接 USB-C Hub → Laptop（UVC 免驅動） |
 | 工具 | `sb camera snap --analyze "儀表讀數是多少？"`：Laptop 用 ffmpeg 拍一張 → 傳到 Spark1 → VLM 分析 → 回傳文字並附上證據圖路徑 |
 | 用途 | 讀儀器面板與測試治具狀態、看白板與手寫筆記、確認 DUT 擺放、有人在座位時才唸報告 |
 | 隱私 | 影像預設 `privacy=local_only`，不上雲；存 7 天後自動刪除（可調）；鏡頭啟用時亮提示燈或顯示通知 |
@@ -378,7 +378,7 @@ sb 任務：test_data_analysis → Spark1（本地）
 
 ### 11.1 已有
 
-Laptop Ultra 64GB、Spark ×2、Logi C920、reSpeaker XVF3800（含外殼）、USB-C 耳機、ChatGPT Plus、Claude Pro。
+Laptop Ultra 64GB、Spark ×2、Logi C922 Pro、reSpeaker XVF3800（含外殼）、USB-C 耳機、ChatGPT Plus、Claude Pro。
 
 ### 11.2 必要採購（Phase 0–3）
 
@@ -387,7 +387,7 @@ Laptop Ultra 64GB、Spark ×2、Logi C920、reSpeaker XVF3800（含外殼）、U
 | UPS 1500VA/900W 純正弦波 | 兩台 Spark + 交換器 | NT$6,000–9,000 |
 | 2.5GbE 5-port 非網管交換器 | 隔離 LAN | NT$1,500–2,500 |
 | USB-C 2.5GbE 網卡 | Laptop 接隔離 LAN | NT$600–1,000 |
-| 有外接電源的 USB-C Hub（含 USB-A ×2 以上） | 接 C920、XVF3800、耳機、網卡 | NT$1,000–2,000 |
+| 有外接電源的 USB-C Hub（含 USB-A ×2 以上） | 接 C922 Pro、XVF3800、耳機、網卡 | NT$1,000–2,000 |
 | Cat6 網路線 ×3 | | NT$300 |
 | 插座功率計 | 量測 Spark 功耗、UPS sizing | NT$300–600 |
 | **小計** | | **約 NT$9,700–15,400** |
@@ -430,7 +430,7 @@ Laptop Ultra 64GB、Spark ×2、Logi C920、reSpeaker XVF3800（含外殼）、U
 | **P6 Golden set** | 100 題 × 雲端 × 本地 → 產出 routing.yaml | 分流表以數據決定 |
 | **P7 Spark2 DEEP** | DEEP 候選 benchmark → Verifier | T07 |
 | **P8 Queue/Approval/Recovery** | lease、heartbeat、RED 核准、重試、worktree | T08–T16、T19–T24 |
-| **P9 收件與視覺** | SFTP 收件區、C920 工具 | 測試數據自動分析報告；`sb camera snap` |
+| **P9 收件與視覺** | SFTP 收件區、C922 Pro 工具 | 測試數據自動分析報告；`sb camera snap` |
 | **P10 離線語音** | XVF3800 + KWS/VAD/ASR/TTS | 語音 KPI（§6.3）；T17 斷網仍能控制 |
 | P11 手機 PWA | Tailscale → Laptop Dashboard | iPhone 可以查看與核准 |
 | P12 Heavy Mode | 雙 Spark 叢集 | 只有在 benchmark 證明有效益時才做 |
@@ -508,7 +508,7 @@ Laptop Ultra 64GB、Spark ×2、Logi C920、reSpeaker XVF3800（含外殼）、U
 | 背景開獨立對話串 | ⭐⭐ 近似 task 概念 | 但它是 vendor session，**不能當 SSOT**；真正的 task 存在 SQLite |
 | Codex 內建瀏覽器驗證成品 | ⭐⭐ 瀏覽器層的驗證工具 | 當作 Verifier 的一環，但仍以 exit code 與測試為主 |
 | 一句話就「部署上網」 | ⚠️ 反面教材 | 本架構中「部署、發布」屬於 **RED 動作**，語音只能提出，必須在螢幕上核准 |
-| Jarvis = 大腦 + 耳嘴 + 手 + 眼，手眼都是工具 | ⭐⭐⭐ 與「Tool Executor Layer」完全一致 | 眼睛 → C920 工具（§7）；耳嘴 → XVF3800（§6）；手 → PowerShell、SSH、Worker API（未來才考慮機械手臂） |
+| Jarvis = 大腦 + 耳嘴 + 手 + 眼，手眼都是工具 | ⭐⭐⭐ 與「Tool Executor Layer」完全一致 | 眼睛 → C922 Pro 工具（§7）；耳嘴 → XVF3800（§6）；手 → PowerShell、SSH、Worker API（未來才考慮機械手臂） |
 | Typeless Brain Dump 與 Voice 秘書分工 | ⭐⭐ 意圖品質決定結果品質 | Intent 層加上「需求不清楚 → 先反問，或先產出計畫給你確認」 |
 | 影片沒有提到的部分 | — | 多機、Queue、核准、驗證、離線、隱私分級：這些就是本藍圖要補的 |
 
@@ -611,7 +611,7 @@ uname -m; cat /etc/os-release; free -h; df -h; nvidia-smi; docker version
 | Control Plane、`sb` CLI、雲端工人、Router | ✅ | §5 |
 | 本地模型候選 | ✅（待 benchmark） | §5.4 |
 | 語音（A/B/C 三階段、XVF3800） | ✅ | §6 |
-| 視覺（C920） | ✅ | §7 |
+| 視覺（C922 Pro） | ✅ | §7 |
 | 外部資料收件（SFTP/FTP） | ✅ | §8 |
 | 安全、核准、驗證、復原 | ✅（精簡版，細節見報告 (2)） | §9、§17 |
 | 電力（UPS）與儲存（NAS） | ✅ | §10 |
