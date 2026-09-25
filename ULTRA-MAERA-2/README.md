@@ -6,6 +6,8 @@
 
 ## 步驟
 
+0. （建議先做）跑一鍵盤點：`.\scripts\laptop-inventory.ps1`，結果寫到
+   `C:\SuperBrain\baseline\ultra-maera-2\inventory.txt`（P0 Gate 證據）。
 1. **安裝隔離用的 USB-C 2.5GbE 網卡**，接上 2.5GbE 隔離交換器（不要接家用 Router）。
 2. 用系統管理員 PowerShell 執行，把網卡名稱換成 `Get-NetAdapter` 查到的實際名稱：
 
@@ -29,6 +31,9 @@
    ```
 
 5. 驗證成功、確認是用金鑰登入（不是密碼）之後，才通知對應的 Spark 執行 `.\spark-bootstrap.ps1 -KeyOnly`。
+6. （P4）裝 SuperBrain Core 骨架：一鍵執行 `.\scripts\install-superbrain-core.ps1`，
+   會自動建 venv、裝依賴、初始化 SQLite（種入三台機器）、跑 pytest 自我驗證、印出 `sb workers`。
+   細節見 `../superbrain-core/README.md`。
 
 ## 驗收（對應 ACCEPTANCE.md P2 Gate / 網路 Gate）
 
