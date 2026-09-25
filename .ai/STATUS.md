@@ -34,7 +34,7 @@
 | P0 | Spark1、Spark2 盤點 | 兩台開機，在本機跑 §14 的指令 |
 | P0 | 功率量測 | 購買插座功率計 |
 | P1 | 影片同款：T01–T03 | ChatGPT 桌面版 + Remote 配對 |
-| P2 | 隔離網路：T04、T05、T25 | 先採購交換器與 USB-C 網卡 |
+| P2 | 隔離網路：T04、T05、T25 | 先採購交換器與 USB-C 網卡；安裝 SOP 與腳本已備妥於 `ULTRA-MAERA-2/`、`SPARK-AGAVE-3/`、`SPARK-AGAVE-4/`，待實機執行後回報結果與 IP |
 | P3 | UPS：T29 | 先量完功率再購買 |
 | P4–P12 | 見 ACCEPTANCE §1 | — |
 | 文件 | Worker daemon API 細節（P8 前）、PWA 設計（P11 前）、golden set 題目（P6 前） | — |
@@ -61,3 +61,5 @@
 | 2026-09-24 | Spark 每月一次受控維護窗口 | Claude 判斷（BLUEPRINT §4.4） |
 | 2026-09-24 | Gemini 改用 Antigravity CLI 免費額度，只當 best-effort | Claude 判斷 |
 | 2026-09-24 | mp4 不上傳 GitHub（版權內容，且 37MB） | Claude 判斷 |
+| 2026-09-25 | 機器名稱定案：Laptop Ultra → **ULTRA-MAERA-2**、Spark1（FAST）→ **SPARK-AGAVE-3**、Spark2（DEEP）→ **SPARK-AGAVE-4**。角色與 IP 配置（10.77.0.11 / .12）沿用 BLUEPRINT §3.1/§4.1 不變，只換名稱。BLUEPRINT.md 本文尚未全文改名，之後有需要再統一改寫 | 使用者 |
+| 2026-09-25 | 新增 `ULTRA-MAERA-2/`、`SPARK-AGAVE-3/`、`SPARK-AGAVE-4/` 三個資料夾，各放安裝 SOP 與 PowerShell 腳本（金鑰產生、隔離網卡設定、`spark-bootstrap.ps1`）。停用密碼登入（`-KeyOnly`）仍維持 RED 動作，需要 ULTRA-MAERA-2 驗證金鑰登入成功後才執行，未做成略過驗證的全自動 | Claude 判斷（依 BLUEPRINT §4.2/§4.4、CLAUDE_REVIEWER 的 RED 動作規則） |
