@@ -13,6 +13,8 @@
 
 ## 步驟
 
+0. （建議先做）跑一鍵盤點：`.\scripts\spark-inventory.ps1 -MachineName spark-agave-3`，結果會寫到
+   `C:\SuperBrain\baseline\spark-agave-3\inventory.txt`，對應 ACCEPTANCE.md P0 Gate 的證據。
 1. **接螢幕鍵盤，完成 Windows 開機設定**，建立本機管理員帳號（記下帳號名稱，稍後要回報）。
 2. **暫時**接上網路（家用 Router 或手機分享）：
    - 跑 Windows Update

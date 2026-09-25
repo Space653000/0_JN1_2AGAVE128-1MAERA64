@@ -13,6 +13,8 @@
 
 ## 步驟
 
+0. （建議先做）跑一鍵盤點：`.\scripts\spark-inventory.ps1 -MachineName spark-agave-4`，結果會寫到
+   `C:\SuperBrain\baseline\spark-agave-4\inventory.txt`，對應 ACCEPTANCE.md P0 Gate 的證據。
 1. **接螢幕鍵盤，完成 Windows 開機設定**，建立本機管理員帳號（記下帳號名稱，稍後要回報）。
 2. **暫時**接上網路：跑 Windows Update、NVIDIA 驅動更新、執行 `wsl --install`。全部裝完後準備接回隔離交換器。
 3. 把網路線改接到 **2.5GbE 隔離交換器**，用系統管理員 PowerShell 執行：
